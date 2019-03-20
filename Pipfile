@@ -9,6 +9,8 @@ verify_ssl = true
 tensorflow = "*"
 pandas = "*"
 scikit-learn = "*"
+request = "*"
+flask = "*"
 
 [requires]
 python_version = "3.6"
