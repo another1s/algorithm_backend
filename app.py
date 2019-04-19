@@ -9,7 +9,7 @@ def LSTM():
     # automatically using test data to perform classification
     model_path = './model/hzy/lstm/model_saved/'
     data_path = './model/hzy/lstm/dataset/'
-    result = classifier(model_path, data_path)
+    result, prediction = classifier(model_path, data_path)
     return jsonify(result)
 
 
