@@ -34,10 +34,10 @@ def classifier(modelpath, datapath):
         tokenizer = pickle.load(handle)
 
     max_len = 32
-    #x_test, y_test = load_data(datapath + "dbpedia_data/dbpedia_csv/test.csv", one_hot=False)
-    #x_test, vocab_size = data_preprocessing_release(x_test, tokenizer, max_len=32, max_words=50000)
-    x_test, y_test = load_data(datapath + "pubmed_data/test.csv", one_hot=False)
-    x_test, vocab_size = data_preprocessing_release(x_test, tokenizer, max_len=32, max_words=500000)
+    x_test, y_test = load_data(datapath + "dbpedia_data/dbpedia_csv/test.csv", one_hot=False)
+    x_test, vocab_size = data_preprocessing_release(x_test, tokenizer, max_len=32, max_words=50000)
+   # x_test, y_test = load_data(datapath + "pubmed_data/test.csv", one_hot=False)
+   # x_test, vocab_size = data_preprocessing_release(x_test, tokenizer, max_len=32, max_words=500000)
     with tf.Session() as sess:
         saver = tf.train.import_meta_graph(modelpath + 'model.ckpt.meta')
         saver.restore(sess, modelpath + "model.ckpt")
@@ -57,4 +57,5 @@ def classifier(modelpath, datapath):
             predict.append(pre)
             cnt += 1
     result = ("Test accuracy : %f %%" % (test_acc / cnt * 100))
-    return result, pre
+    print(result)
+    return result, predict
