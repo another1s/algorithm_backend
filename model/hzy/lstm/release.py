@@ -1,6 +1,6 @@
 import tensorflow as tf
-from main import load_data
-from prepare_data import fill_feed_dict, data_preprocessing_release
+from model.hzy.lstm.helperfunction.prepare_data import load_data
+from model.hzy.lstm.helperfunction.prepare_data import fill_feed_dict, data_preprocessing_release
 import pickle
 import numpy as np
 

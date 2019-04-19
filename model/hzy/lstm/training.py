@@ -1,7 +1,7 @@
-from helperfunction.prepare_data import *
+from model.hzy.lstm.helperfunction.prepare_data import *
 import time
-from helperfunction.model_helper import *
-from lstm.main import ABLSTM
+from model.hzy.lstm.helperfunction.model_helper import *
+from model.hzy.lstm.main import ABLSTM
 # load data
 # dbpedia = tf.data.Dataset('dbpedia')
 x_train, y_train = load_data("./lstm/dataset/dbpedia_data/dbpedia_csv/train.csv", sample_ratio=1e-2, one_hot=False)

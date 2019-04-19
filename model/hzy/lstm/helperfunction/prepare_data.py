@@ -3,6 +3,7 @@ import pandas as pd
 import tensorflow as tf
 from keras_preprocessing.sequence import pad_sequences
 from sklearn.utils import shuffle
+
 names = ["class", "title", "content"]
 
 

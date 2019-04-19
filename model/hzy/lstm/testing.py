@@ -1,6 +1,6 @@
 import tensorflow as tf
-from main import load_data
-from prepare_data import data_preprocessing_v2
+from model.hzy.lstm.helperfunction.prepare_data import load_data
+from model.hzy.lstm.helperfunction.prepare_data import data_preprocessing_v2
 import pickle
 from keras_preprocessing.sequence import pad_sequences
 

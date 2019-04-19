@@ -1,5 +1,5 @@
 from tensorflow.python.ops.rnn import bidirectional_dynamic_rnn as bi_rnn
-from helperfunction.prepare_data import *
+from model.hzy.lstm.helperfunction.prepare_data import *
 from tensorflow.contrib.rnn import LSTMCell
 FLAGS = None
 
