@@ -1,10 +1,11 @@
 import tensorflow as tf
-from main import load_data
-from prepare_data import data_preprocessing_v2, fill_feed_dict
+from model.hzy.lstm.main import load_data
+from model.hzy.lstm.helperfunction.prepare_data import data_preprocessing_v2, fill_feed_dict
 import pickle
 from keras_preprocessing.sequence import pad_sequences
 import numpy as np
-from prepare_data import data_preprocessing_release
+
+
 def make_test_feed_dict0(x, label, keep_prob, batch):
     a = batch[1]
     feed_dict = {x: batch[0],
@@ -21,10 +22,10 @@ def run_eval_step0(x, label, keep_prob, prediction, sess, batch):
 
 config = {
     "max_len": 32,
-    "hidden_size": 64,
-    "vocab_size": 50002,
+    "hidden_size": 72,
+    "vocab_size": 60002,
     "embedding_size": 128,
-    "n_class": 15,
+    "n_class": 7,
     "learning_rate": 1e-3,
     "batch_size": 4,
     "train_epoch": 20
@@ -34,7 +35,7 @@ config = {
 max_len = 32
 x_train, y_train = load_data("./dataset/dbpedia_data/dbpedia_csv/train.csv", sample_ratio=1e-2, one_hot=False)
 x_test0, y_test = load_data("./dataset/dbpedia_data/dbpedia_csv/test.csv", one_hot=False)
-x_train, x_test, vocab_size, train_words, test_words, tokenizer = data_preprocessing_v2(x_train, x_test0, max_len=32, max_words=50000)
+x_train, x_test, vocab_size, train_words, test_words, tokenizer = data_preprocessing_v2(x_train, x_test0, max_len=32, max_words=60002)
 with open('tokenizer.pickle', 'wb') as handle:
     pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
 

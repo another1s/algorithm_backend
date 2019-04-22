@@ -4,12 +4,12 @@ from model.hzy.lstm.helperfunction.model_helper import *
 from model.hzy.lstm.main import ABLSTM
 # load data
 # dbpedia = tf.data.Dataset('dbpedia')
-x_train, y_train = load_data("./lstm/dataset/dbpedia_data/dbpedia_csv/train.csv", sample_ratio=1e-2, one_hot=False)
-x_test, y_test = load_data("./lstm/dataset/dbpedia_data/dbpedia_csv/test.csv", one_hot=False)
+x_train, y_train = load_data("./lstm/dataset/pubmed_data/training.csv", sample_ratio=1, one_hot=False)
+x_test, y_test = load_data("./lstm/dataset/pubmed_data/test.csv", one_hot=False)
 
 # data preprocessing
 x_train, x_test, vocab_size, train_words, test_words, tokenizer = data_preprocessing_v2(x_train, x_test, max_len=32,
-                                                                             max_words=50000)
+                                                                             max_words=60002)
 print("train size: ", len(x_train))
 print("vocab size: ", vocab_size)
 
@@ -19,10 +19,10 @@ print("Validation Size: ", dev_size)
 
 config = {
     "max_len": 32,
-    "hidden_size": 64,
+    "hidden_size": 72,
     "vocab_size": vocab_size,
     "embedding_size": 128,
-    "n_class": 15,
+    "n_class": 7,
     "learning_rate": 1e-3,
     "batch_size": 4,
     "train_epoch": 20

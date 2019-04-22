@@ -22,10 +22,10 @@ def run_eval_step0(x, label, keep_prob, prediction, sess, batch):
 def classifier(modelpath, datapath):
     config = {
         "max_len": 32,
-        "hidden_size": 64,
-        "vocab_size": 50002,
+        "hidden_size": 72,
+        "vocab_size": 60002,
         "embedding_size": 128,
-        "n_class": 15,
+        "n_class": 7,
         "learning_rate": 1e-3,
         "batch_size": 4,
         "train_epoch": 20
@@ -34,10 +34,10 @@ def classifier(modelpath, datapath):
         tokenizer = pickle.load(handle)
 
     max_len = 32
-    x_test, y_test = load_data(datapath + "dbpedia_data/dbpedia_csv/test.csv", one_hot=False)
-    x_test, vocab_size = data_preprocessing_release(x_test, tokenizer, max_len=32, max_words=50000)
-   # x_test, y_test = load_data(datapath + "pubmed_data/test.csv", one_hot=False)
-   # x_test, vocab_size = data_preprocessing_release(x_test, tokenizer, max_len=32, max_words=500000)
+    #x_test, y_test = load_data(datapath + "dbpedia_data/dbpedia_csv/test.csv", one_hot=False)
+    #x_test, vocab_size = data_preprocessing_release(x_test, tokenizer, max_len=32, max_words=50000)
+    x_test, y_test = load_data(datapath + "pubmed_data/test.csv", one_hot=False)
+    x_test, vocab_size = data_preprocessing_release(x_test, tokenizer, max_len=32, max_words=60002)
     with tf.Session() as sess:
         saver = tf.train.import_meta_graph(modelpath + 'model.ckpt.meta')
         saver.restore(sess, modelpath + "model.ckpt")
